@@ -1,6 +1,7 @@
 package com.oscargil80.roomexampleappdevsnotes
 
 import androidx.databinding.Bindable
+import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +10,7 @@ import com.oscargil80.roomexampleappdevsnotes.db.SubscriberRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class SubscriberViewModel(private val repository: SubscriberRepository) : ViewModel() {
+class SubscriberViewModel(private val repository: SubscriberRepository) : ViewModel(), Observable {
 
     val subscribers = repository.subscribers
 
@@ -58,6 +59,14 @@ class SubscriberViewModel(private val repository: SubscriberRepository) : ViewMo
 
     fun clearAll(): Job = viewModelScope.launch {
         repository.deleteAll()
+    }
+
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+
+    }
+
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+
     }
 
 

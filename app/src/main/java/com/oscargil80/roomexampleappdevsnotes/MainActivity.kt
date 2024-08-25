@@ -3,11 +3,13 @@ package com.oscargil80.roomexampleappdevsnotes
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oscargil80.roomexampleappdevsnotes.databinding.ActivityMainBinding
+import com.oscargil80.roomexampleappdevsnotes.db.Subscriber
 import com.oscargil80.roomexampleappdevsnotes.db.SubscriberDao
 import com.oscargil80.roomexampleappdevsnotes.db.SubscriberDatabase
 import com.oscargil80.roomexampleappdevsnotes.db.SubscriberRepository
@@ -25,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         binding.myViewModel = subscriberViewModel
         binding.lifecycleOwner = this
         initRecyclerView()
+        subscriberViewModel.message.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show();
+            }
+        })
     }
 
     private fun initRecyclerView(){
@@ -36,7 +43,28 @@ class MainActivity : AppCompatActivity() {
     private fun displaySubscribersList() {
         subscriberViewModel.subscribers.observe(this, Observer {
             Log.i("MYTAG", it.toString())
-            binding.subscriberRecyclerView.adapter = SubscriberAdapter(it)
+            binding.subscriberRecyclerView.adapter = SubscriberAdapter(
+                it,
+               {selectedItem -> listItemClicked(selectedItem) }
+            )
         })
     }
+
+    private fun listItemClicked(subscriber:Subscriber){
+
+        subscriberViewModel.initUpdateAndDelete(subscriber)
+
+
+    }
+
+
+
+
 }
+
+/*
+  {selectedItem->listItemClicked(selectedItem)}
+    {selectedItem:Subscriber->listItemClicked(selectedItem)}
+     clickListener = {subscriber -> listItemClicked(subscriber)  }
+
+ */

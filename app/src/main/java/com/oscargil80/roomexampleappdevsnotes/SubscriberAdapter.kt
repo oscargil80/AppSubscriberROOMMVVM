@@ -9,7 +9,8 @@ import com.oscargil80.roomexampleappdevsnotes.db.Subscriber
 
 
 class SubscriberAdapter(
-    var SubscriberList: List<Subscriber>
+    var SubscriberList: List<Subscriber>,
+    private val clickListener:(Subscriber)->Unit
 ) : RecyclerView.Adapter<SubscriberViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscriberViewHolder {
@@ -21,7 +22,7 @@ class SubscriberAdapter(
 
     override fun onBindViewHolder(holder: SubscriberViewHolder, position: Int) {
         val item = SubscriberList[position]
-        holder.render(item)//, onClickListener, onItemSeleted)
+        holder.render(item, clickListener)//, onItemSeleted)
     }
 
     override fun getItemCount(): Int = SubscriberList.size

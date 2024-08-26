@@ -2,6 +2,8 @@
 
 <layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:background="@color/white"
+
     xmlns:tools="http://schemas.android.com/tools">
     <data>
 <variable
@@ -13,8 +15,9 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
+  android:padding="15dp"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <EditText
@@ -22,8 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+
         android:layout_marginBottom="5dp"
         android:ems="10"
+        android:textColorHint="#57575555"
+        android:textColor="@color/black"
         android:text="@={myViewModel.inputName}"
         android:hint="Subscriber's Name"
         android:inputType="textPersonName"
@@ -36,6 +42,8 @@
         android:layout_margin="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:textColorHint="#57575555"
+        android:textColor="@color/black"
         android:ems="10"
         android:text="@={myViewModel.inputEmail}"
         android:hint="Subscriber's email"

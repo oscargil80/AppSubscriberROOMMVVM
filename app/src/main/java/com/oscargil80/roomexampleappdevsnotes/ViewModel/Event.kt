@@ -1,4 +1,4 @@
-package com.oscargil80.roomexampleappdevsnotes
+package com.oscargil80.roomexampleappdevsnotes.ViewModel
 
 
     /**

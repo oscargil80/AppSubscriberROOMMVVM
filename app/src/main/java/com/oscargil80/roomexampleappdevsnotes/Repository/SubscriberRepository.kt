@@ -1,4 +1,7 @@
-package com.oscargil80.roomexampleappdevsnotes.db
+package com.oscargil80.roomexampleappdevsnotes.Repository
+
+import com.oscargil80.roomexampleappdevsnotes.db.Subscriber
+import com.oscargil80.roomexampleappdevsnotes.db.SubscriberDao
 
 class SubscriberRepository(private val dao : SubscriberDao) {
 

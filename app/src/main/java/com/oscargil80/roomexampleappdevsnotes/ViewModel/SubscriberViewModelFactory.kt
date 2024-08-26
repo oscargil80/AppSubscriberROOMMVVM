@@ -1,8 +1,9 @@
-package com.oscargil80.roomexampleappdevsnotes
+package com.oscargil80.roomexampleappdevsnotes.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.oscargil80.roomexampleappdevsnotes.db.SubscriberRepository
+import com.oscargil80.roomexampleappdevsnotes.Repository.SubscriberRepository
+import com.oscargil80.roomexampleappdevsnotes.SubscriberViewModel
 
 class SubscriberViewModelFactory(private val repository: SubscriberRepository):ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

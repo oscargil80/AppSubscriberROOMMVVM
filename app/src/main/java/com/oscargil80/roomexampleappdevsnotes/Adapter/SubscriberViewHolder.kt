@@ -1,4 +1,4 @@
-package com.oscargil80.roomexampleappdevsnotes
+package com.oscargil80.roomexampleappdevsnotes.Adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.oscargil80.roomexampleappdevsnotes.databinding.ListItemBinding
